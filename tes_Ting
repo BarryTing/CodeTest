@@ -1,0 +1,50 @@
+  //EEPROM address to store USER password
+#define ADMIN_PASSWORD_EEPROM_ADDRESS 10
+const byte maxPasswordLength = 4;
+char buf[maxPasswordLength + 1];
+String userPassword;              //variable to hold USER password
+String adminPassword;             //variable to hole ADMIN password
+  boolean loadConfiguration()
+void setup(){
+
+Serial.begin(57600);
+pinMode(2, OUTPUT);
+}
+void loop()
+           {
+    if(Serial.available()){
+                   // 讀出第 1 個字元
+             unsigned char charreceived = Serial.read();
+             switch(charreceived){
+               case'1': 
+               
+              
+               
+              if(loadConfiguration())
+               {  
+                 digitalWrite(2, HIGH);
+                 Serial.println("  Arduino Led On");
+               }
+               else
+               {
+                 digitalWrite(2, LOW);
+                 Serial.println("  Arduino Led Off");
+               }
+              break;
+              case'2':
+               if(loadConfiguration())
+               {  
+                 digitalWrite(2, HIGH);
+                 Serial.println("  Arduino Led On");
+               }
+               else
+               {
+                 digitalWrite(2, LOW);
+                 Serial.println("  Arduino Led Off");
+               }
+              break;
+            } 
+           
+           }
+           }
+}
